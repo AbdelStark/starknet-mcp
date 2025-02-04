@@ -3,6 +3,8 @@ import { GetBlockResponse } from "starknet";
 
 export const ConfigSchema = z.object({
   starknetRpcUrl: z.string(),
+  starknetAccountAddress: z.string(),
+  starknetAccountPrivateKey: z.string(),
 });
 
 export type Config = z.infer<typeof ConfigSchema>;
@@ -24,7 +26,7 @@ export class StarknetError extends Error {
   constructor(
     message: string,
     public readonly code: StarknetErrorCode | string,
-    public readonly status?: number,
+    public readonly status?: number
   ) {
     super(message);
     this.name = "StarknetError";
